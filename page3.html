@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANAGE ROOM</title>
+    <link rel="stylesheet" href="./style3.css">
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="formbox manage">
+            <h2>MANAGE ROOM</h2>
+            <form action="#" method="POST">
+                <div class="input-box">
+                    <input type="text" name="Name" required>
+                    <label>Name</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" name="Gender" required>
+                    <label>Gender</label>
+                </div>
+                <div class="input-box">
+                    <input type="number" name="Phone" required>
+                    <label>Phone</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" name="roomnumber" required>
+                    <label>Room_Number</label>
+                </div>
+                <div class="input-box">
+                    <input type="date" name="date" required>
+                    <label>Date</label>
+                </div>
+                <div class="input-box">
+                    <input type="number" name="numberOfDays" id="numberOfDays" required>
+                    <label>How many days?</label>
+                </div>
+                <div class="input-box">
+                    <input type="number" name="pricePerDay" id="pricePerDay" required>
+                    <label>Price of Room per Day</label>
+                </div>
+                <div class="input-box">
+                    <input type="number" name="totalprice" id="calculatedPrice" readonly>
+                    <label>Pay this!</label>
+                </div>
+                <br>
+                <button type="button" class="btn" onclick="calculatePrice()">CALCULATE</button>
+            </br>
+                <br>
+                <button type="submit" class="btn">SAVE</button>
+        </br>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function calculatePrice() {
+            // Get values from the form
+            const numberOfDays = parseInt(document.getElementById('numberOfDays').value, 10);
+            const pricePerDay = parseFloat(document.getElementById('pricePerDay').value);
+            
+            // Check if values are valid
+            if (!isNaN(numberOfDays) && !isNaN(pricePerDay)) {
+                // Perform the calculation
+                const totalPrice = numberOfDays * pricePerDay;
+    
+                // Display the result
+                document.getElementById('calculatedPrice').value = totalPrice.toFixed(2); // Format to two decimal places
+            } else {
+                alert("Please enter valid numbers for Number of Days and Price per Day.");
+            }
+        }
+    </script>
+</body>
+</html>
